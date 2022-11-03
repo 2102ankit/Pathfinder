@@ -21,7 +21,7 @@ export function dijkstra(grid, startNode, finishNode) {
           visitedNodesInOrder.pop();
           return visitedNodesInOrder;}
       updateUnvisitedNeighbors(closestNode, grid);
-    }
+    } 
 }
   
   function sortNodesByDistance(unvisitedNodes) {

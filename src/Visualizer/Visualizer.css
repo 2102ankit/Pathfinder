@@ -2,22 +2,22 @@
     margin: 70px 0 0;
 }
 
-body{
+body {
     margin: 20px;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.grid{
+.grid {
     display: inline-block;
 }
 
-.grid > div{
+.grid>div {
     display: flex;
 }
 

@@ -1,11 +1,7 @@
 .node{
-    /* border: solid 1px salmon; */
-    outline: 1px solid rgb(175, 216, 248);
-    /* width: 1.9vw; */
-  /* height: 1.9vw; */
-  width: 20px;
-  height: 20px;
-  margin: 1px;
+    border: solid 1px rgb(175, 216, 248);
+  width: 24px;
+  height: 24px;
 }
 
 .white{
@@ -29,6 +25,7 @@
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-play-state: running;
+    
   }
   
   @keyframes visitedAnimation {
@@ -55,7 +52,35 @@
   
   .node-wall {
     background-color: rgb(12, 53, 71);
+    animation-name: walls;
+    animation-duration: .2s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    border: solid 1px rgb(12, 53, 71);
   }
+  
+
+  @keyframes walls {
+    0% {
+      transform: scale(0.8);
+      background-color: rgb(12, 53, 71);
+    }
+  
+    50% {
+      transform: scale(0.9);
+      background-color:rgb(12, 53, 71);
+    }
+  
+    100% {
+      transform: scale(1);
+      background-color: rgb(12, 53, 71);
+    }
+  }
+  
   
   .node-shortest-path {
     animation-name: shortestPath;
@@ -71,7 +96,7 @@
   @keyframes shortestPath {
     0% {
       transform: scale(0.6);
-      background-color: rgb(255, 254, 106);
+      background-color: rgb(232, 155, 41);
     }
   
     50% {
@@ -81,7 +106,7 @@
   
     100% {
       transform: scale(1);
-      background-color: rgb(255, 254, 106);
+      background-color: rgb(91, 220, 32);
     }
   }
   
