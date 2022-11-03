@@ -3,10 +3,10 @@ import Node from './NodeComponent/Node'
 import { dijkstra, getNodesInShortestPathOrder } from '../algorithms/dijkstra';
 import './Visualizer.css'
 
-const START_NODE_ROW = 1
-const START_NODE_COL = 1
-const FINISH_NODE_ROW = 19
-const FINISH_NODE_COL = 29
+const START_NODE_ROW = 8
+const START_NODE_COL = 8
+const FINISH_NODE_ROW = 8
+const FINISH_NODE_COL = 31
 
 export default class Visualizer extends Component {
     constructor() {
@@ -58,7 +58,6 @@ export default class Visualizer extends Component {
     }
 
     animateShortestPath(nodesInShortestPathOrder) {
-        // nodesInShortestPathOrder[0].style.backgroundColor = 'pink !important'
         for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
 
             setTimeout(
@@ -77,9 +76,11 @@ export default class Visualizer extends Component {
         const { grid } = this.state;
         const startNode = grid[START_NODE_ROW][START_NODE_COL]
         const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+
         const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
 
         const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+
         this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
         nodesInShortestPathOrder[0].style.backgroundColor = 'green'
         nodesInShortestPathOrder[nodesInShortestPathOrder.length() - 1].style.backgroundColor = 'red'
@@ -93,8 +94,6 @@ export default class Visualizer extends Component {
             for (let col = 0; col < grid[0].length; col++) {
 
                 document.getElementById(`node-${row}-${col}`).className = 'node white';
-                // if (`node-${row}-${col}`.isFinish) document.getElementById(`node-${row}-${col}`).className = 'node node-finish';
-                //     if (`node-${row}-${col}`.isStart) document.getElementById(`node-${row}-${col}`).className = 'node node-start';
                 if (row === START_NODE_ROW && col === START_NODE_COL)
                     document.getElementById(`node-${row}-${col}`).className = 'node node-start';
                 if (row === FINISH_NODE_ROW && col === FINISH_NODE_COL)
@@ -105,22 +104,10 @@ export default class Visualizer extends Component {
     }
 
     reset() {
-        // const node = document.getElementsByClassName('.node')
-        // node.style.background = "pink";
-        // const { grid } = this.state;
         const grid = getInitialGrid()
         this.setState({ grid })
-
+        
         this.clearFormat(grid)
-
-        // node.style.animationPlayState = 'paused';
-
-        // node.style.animationPlayState = 'paused';
-
-        //   const startNode = grid[START_NODE_ROW][START_NODE_COL]
-        //   const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
-        // const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
-        // const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
     }
 
     render() {
@@ -139,6 +126,7 @@ export default class Visualizer extends Component {
                     <button className='reset-button' onClick={
                         () => {
                             console.log("reset ho bhai")
+                            this.reset()
                             this.reset()
                         }
                     }>
@@ -205,9 +193,9 @@ const createNode = (col, row) => {
 
 const getInitialGrid = () => {
     const grid = [];
-    for (let row = 0; row < 20; row++) {
+    for (let row = 0; row <17; row++) {
         const currentRow = [];
-        for (let col = 0; col < 60; col++) {
+        for (let col = 0; col <40; col++) {
             currentRow.push(createNode(col, row));
         }
         grid.push(currentRow);
