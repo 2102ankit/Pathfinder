@@ -1,7 +1,7 @@
-import { Component } from 'react'
-import Node from './NodeComponent/Node'
+import { Component } from 'react';
+import Node from './NodeComponent/Node';
 import { dijkstra, getNodesInShortestPathOrder } from '../algorithms/dijkstra';
-import './Visualizer.css'
+import './PathfindingVisualizer.css';
 
 const START_NODE_ROW = 8
 const START_NODE_COL = 8
@@ -116,23 +116,28 @@ export default class Visualizer extends Component {
         return (
             <div className='container'>
                 <div>
-                    <button className='visualize-button' onClick={
+                    <button className='button-27  ' onClick={
                         () => {
                             console.log("Chal jaa bhai")
                             this.visualizeDijkstra()
                         }
                     }>Visualize Dijkstra's Algorithm
                     </button>
-                    <button className='reset-button' onClick={
+                    <button className='button-27 reset' onClick={
                         () => {
                             console.log("reset ho bhai")
-                            this.reset()
                             this.reset()
                         }
                     }>
                         Reset
                     </button>
                 </div>
+                    <div className='start-pt'>enter the start pt</div>
+                    <input type="number" id="startpt" placeholder='x cor:'></input>
+                    <input type="number" id="startpt" placeholder='y cor:'></input>
+                    <div>enter the end pt</div>
+                    <input type="number" placeholder='x cor:'></input>
+                    <input type="number" id="startpt" placeholder='y cor:'></input>
                 <div className='grid'>
                     {
                         grid.map(
@@ -178,6 +183,11 @@ export default class Visualizer extends Component {
     }
 
 }
+//const onclickstore=(id)=>{
+//  return{ pt=document.getElementById("id").value,
+//  console.log(pt)
+//};
+//}
 
 const createNode = (col, row) => {
     return {
